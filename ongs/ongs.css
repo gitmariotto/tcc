@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-brand-green: #163B29;
+    --color-brand-green-hover: #0f2b1d;
+    --color-brand-terracotta: #B85633;
+    --color-brand-terracotta-hover: #9b4527;
+
+    --color-bg-page: #FAF9F6;
+    /* Fundo bege claro */
+    --color-bg-card: #FFFFFF;
+    /* Branco puro para os cards e busca */
+
+    --color-text-main: #555555;
+    --color-text-dark: #1A1A1A;
+    --color-text-muted: #6B7280;
+    /* Texto em tom cinza suave */
+    --color-border: #D1D5DB;
+    /* Borda sutil */
+
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    min-height: 100vh;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+/* BOTÃO VOLTAR PARA A HOME */
+.back-link {
+    display: inline-block;
+    color: var(--color-brand-green);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- CABEÇALHO DA PÁGINA --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+.page-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.btn-primary-action {
+    background-color: var(--color-brand-terracotta);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.btn-primary-action:hover {
+    background-color: var(--color-brand-terracotta-hover);
+}
+
+/* --- CAMPO DE BUSCA E FILTROS --- */
+.search-filters-section {
+    margin-bottom: 2.5rem;
+}
+
+.search-box {
+    margin-bottom: 1.25rem;
+    max-width: 420px;
+}
+
+.search-input {
+    width: 100%;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+/* FOCO DO INPUT: Borda preta leve e sem sombras cinzas */
+.search-input:focus {
+    border-color: #111111;
+    box-shadow: none;
+}
+
+.search-input::placeholder {
+    color: #9CA3AF;
+}
+
+/* Chips / Filtros de Causa */
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chip {
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.875rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chip:hover {
+    border-color: var(--color-brand-green);
+    color: var(--color-brand-green);
+}
+
+.chip.active {
+    background-color: var(--color-brand-green);
+    color: #FFFFFF;
+    border-color: var(--color-brand-green);
+}
+
+/* --- GRID DE CARDS DAS ONGS --- */
+.ongs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.ong-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ong-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(22, 59, 41, 0.08);
+}
+
+.ong-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+/* AVATAR/FOTO: Quadrada com bordas levemente arredondadas */
+.ong-avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 12px;
+    /* Cantos arredondados, formato quadrado */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ong-info-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.ong-name {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-brand-green);
+    line-height: 1.2;
+}
+
+.ong-location {
+    font-size: 0.825rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ong-causa-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-brand-terracotta);
+    margin-top: 0.25rem;
+}
+
+.ong-description {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-view-ong {
+    width: 100%;
+    background-color: var(--color-brand-green);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem;
+    font-size: 0.925rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    display: block;
+}
+
+.btn-view-ong:hover {
+    background-color: var(--color-brand-green-hover);
+}
+
+/* --- ESTADO VAZIO (SEM EMOJI) --- */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--color-bg-card);
+    border-radius: 20px;
+    border: 1px dashed var(--color-border);
+}
+
+.empty-state-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state-text {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-primary-action {
+        text-align: center;
+    }
+
+    .ongs-grid {
+        grid-template-columns: 1fr;
+    }
+}

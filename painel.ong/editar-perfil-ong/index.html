@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar perfil da ONG - Painel Administrativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="page-header">
+            <div>
+                <h1 class="page-title">Editar perfil da ONG</h1>
+                <p class="page-desc">Essas informações aparecem na página pública da sua instituição.</p>
+            </div>
+            <div style="display: flex; gap: 0.8rem;">
+                <a href="../index.html" class="btn-outline" style="text-decoration: none;">Voltar ao painel</a>
+                <button type="button" class="btn-outline" id="btnVerPaginaPublica">Ver página pública</button>
+            </div>
+        </header>
+
+        <form id="formPerfilOng" class="form-grid">
+
+            <div class="form-group full-width">
+                <label for="nomeOng">Nome da ONG</label>
+                <input type="text" id="nomeOng" class="form-control" placeholder="UPA">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" class="form-control" rows="4"
+                    placeholder="Descrição das atividades da ONG..."></textarea>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="causa">Causa principal</label>
+                <select id="causa" class="form-control">
+                    <option value="Animais">Animais</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Meio Ambiente">Meio Ambiente</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Assistência Social">Assistência Social</option>
+                </select>
+            </div>
+
+            <div class="form-group col-3">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" class="form-control" placeholder="Lorena">
+            </div>
+
+            <div class="form-group col-3">
+                <label for="estado">Estado</label>
+                <input type="text" id="estado" class="form-control" placeholder="SP">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" class="form-control" placeholder="Rua José do Cedro">
+            </div>
+
+            <div class="form-group col-2">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" id="cnpj" class="form-control" placeholder="00.000.000/0001-00">
+            </div>
+
+            <div class="form-group col-2">
+                <label for="chavePix">Chave PIX para doações</label>
+                <input type="text" id="chavePix" class="form-control" placeholder="11166626196">
+            </div>
+
+            <div class="form-group col-3">
+                <label for="email">E-mail de contato</label>
+                <input type="email" id="email" class="form-control" placeholder="nicolymariotosenai@gmail.com">
+            </div>
+
+            <div class="form-group col-3">
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" class="form-control" placeholder="12982976786">
+            </div>
+
+            <div class="form-group col-3">
+                <label for="site">Site</label>
+                <input type="text" id="site" class="form-control" placeholder="CIDVIIUVWURVWOVIWE">
+            </div>
+
+            <div class="form-group col-2">
+                <label>Logo da ONG</label>
+                <div class="upload-container">
+                    <input type="file" id="logoUpload" accept="image/*" class="file-input">
+                    <label for="logoUpload" class="btn-file-upload">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Escolher Logo
+                    </label>
+                    <div id="previewLogo" class="image-preview"></div>
+                </div>
+            </div>
+
+            <div class="form-group col-2">
+                <label>Foto de Capa</label>
+                <div class="upload-container">
+                    <input type="file" id="capaUpload" accept="image/*" class="file-input">
+                    <label for="capaUpload" class="btn-file-upload">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Escolher Capa
+                    </label>
+                    <div id="previewCapa" class="image-preview"></div>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Galeria de Fotos</label>
+                <div class="upload-container">
+                    <input type="file" id="galeriaUpload" accept="image/*" multiple class="file-input">
+                    <label for="galeriaUpload" class="btn-file-upload">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        Adicionar Fotos à Galeria
+                    </label>
+                    <div id="previewGaleria" class="galeria-preview-grid"></div>
+                </div>
+            </div>
+
+            <div class="form-actions full-width">
+                <button type="submit" class="btn-primary">Salvar alterações</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

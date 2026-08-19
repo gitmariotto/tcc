@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponte Solidária - Criar Conta</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+
+    <div class="signup-wrapper">
+
+        <div class="signup-banner"></div>
+
+        <div class="signup-content">
+            <div class="form-container">
+
+                <h1 class="page-title">Criar conta</h1>
+                <p class="page-subtitle">Escolha como você quer participar da rede solidária.</p>
+
+                <div class="profile-selection">
+                    <div class="profile-card active" id="cardPessoa">
+                        <h3 class="card-title">Sou pessoa</h3>
+                        <p class="card-desc">Quero doar, transportar doações ou ser voluntário.</p>
+                    </div>
+
+                    <div class="profile-card" id="cardOng">
+                        <h3 class="card-title">Represento uma ONG</h3>
+                        <p class="card-desc">Quero divulgar a instituição, criar campanhas e receber doações.</p>
+                    </div>
+                </div>
+
+                <form class="signup-form" id="signupForm" onsubmit="event.preventDefault();">
+
+                    <h2 class="section-heading">Seus dados</h2>
+
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" placeholder="(11) 90000-0000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Crie uma senha segura" required>
+                    </div>
+
+                    <div class="ong-fields" id="ongFields">
+                        <h2 class="section-heading">Dados da instituição</h2>
+
+                        <div class="form-row">
+                            <div class="form-group flex-2">
+                                <label for="nomeOng">Nome da ONG</label>
+                                <input type="text" id="nomeOng" placeholder="Nome da instituição">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" id="cnpj" placeholder="00.000.000/0001-00">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group flex-2">
+                                <label for="causa">Causa principal</label>
+                                <select id="causa" class="select-input">
+                                    <option value="Crianças">Crianças</option>
+                                    <option value="Animais">Animais</option>
+                                    <option value="Idosos">Idosos</option>
+                                    <option value="Saúde">Saúde</option>
+                                    <option value="Educação">Educação</option>
+                                    <option value="Meio ambiente">Meio ambiente</option>
+                                </select>
+                            </div>
+                            <div class="form-group flex-2">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" placeholder="Sua cidade">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="estado">Estado</label>
+                                <input type="text" id="estado" placeholder="SP" maxlength="2">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" placeholder="Rua, número, bairro">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricao">Descrição da ONG</label>
+                            <textarea id="descricao" rows="4"
+                                placeholder="Quem vocês são, quem atendem e do que mais precisam"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btnSubmit">Criar minha conta</button>
+
+                    <div class="form-footer">
+                        <a href="../login/login.html" class="link-login">Já tenho conta, quero entrar</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="cadastro.js"></script>
+</body>
+
+</html>

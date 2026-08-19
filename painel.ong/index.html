@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Ponte Solidária</title>
+
+    <!-- 1º O CSS Global com os estilos do cabeçalho e logo -->
+    <link rel="stylesheet" href="../global.css">
+    <!-- 2º O CSS específico do Painel Administrativo -->
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../imagens/logo.png" alt="Logo Ponte Solidária" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="../campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="../carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="../voluntariado/voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="../saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../login/login.html" class="nav-link user-panel">Entrar</a>
+                <a href="../cadastro/cadastro.html" class="btn-create-action" id="createActionBtn">Criar ação</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="ong-label">PAINEL DA ONG</span>
+                <h1 class="ong-name" id="sidebarOngName">--</h1>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="visao-geral">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Visão geral
+                </button>
+                <button class="nav-item" data-tab="campanhas">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    Campanhas
+                    <span class="badge" id="badgeCampanhas">0</span>
+                </button>
+                <button class="nav-item" data-tab="voluntariado">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    Voluntariado
+                    <span class="badge" id="badgeVoluntariado">0</span>
+                </button>
+                <button class="nav-item" data-tab="doacoes">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    Doações e entregas
+                </button>
+                <button class="nav-item" data-tab="configuracoes">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Configurações
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="content-header">
+                <div class="header-info">
+                    <h2 class="section-title" id="mainOngName">--</h2>
+                    <p class="section-desc">Acompanhe suas campanhas, voluntariados, doações a caminho e confirme os recebimentos.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-outline btn-ver-pagina-publica">Ver página pública</button>
+                    <button class="btn-primary btn-editar-perfil-publico">Editar perfil público</button>
+                </div>
+            </header>
+
+            <hr class="divider">
+
+            <section id="visao-geral" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                        </svg>
+                        <span class="stat-number" id="statCampanhas">0</span>
+                        <span class="stat-label">Campanhas criadas</span>
+                    </div>
+                    <div class="stat-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span class="stat-number" id="statVoluntariados">0</span>
+                        <span class="stat-label">Voluntariados criados</span>
+                    </div>
+                    <div class="stat-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        </svg>
+                        <span class="stat-number" id="statTransporte">0</span>
+                        <span class="stat-label">Doações aguardando transporte</span>
+                    </div>
+                    <div class="stat-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span class="stat-number" id="statConcluidas">0</span>
+                        <span class="stat-label">Entregas concluídas</span>
+                    </div>
+                </div>
+
+                <div class="quick-actions-box">
+                    <h3 class="box-title">Atalhos rápidos</h3>
+                    <div class="actions-flex">
+                        <button class="btn-primary btn-abrir-campanha">Criar campanha</button>
+                        <button class="btn-outline btn-abrir-voluntariado">Criar voluntariado</button>
+                        <button class="btn-outline btn-editar-perfil-publico">Editar perfil público</button>
+                        <button class="btn-outline">Cadastrar doação que precisa de transporte</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="campanhas" class="tab-content">
+                <div class="section-top-row">
+                    <div>
+                        <h3 class="box-title">Sua Campanha Ativa</h3>
+                        <p class="section-subtitle">Acompanhe e gerencie as arrecadações da sua ONG.</p>
+                    </div>
+                    <button class="btn-primary btn-abrir-campanha">Nova campanha</button>
+                </div>
+                <div id="campanhasContainer" class="campanhas-list"></div>
+            </section>
+
+            <section id="voluntariado" class="tab-content">
+                <div class="section-top-row">
+                    <div>
+                        <h3 class="box-title">Oportunidades de voluntariado</h3>
+                        <p class="section-subtitle">Ex.: "Ajudar em evento no sábado" ou "Separar doações por 2 horas".</p>
+                    </div>
+                    <button class="btn-primary btn-abrir-voluntariado" id="btnAbrirVoluntariado">Novo voluntariado</button>
+                </div>
+                <div id="voluntariadosContainer" class="voluntariados-list"></div>
+            </section>
+
+            <section id="doacoes" class="tab-content">
+                <h3 class="box-title">Doações destinadas à sua ONG</h3>
+                <p class="section-subtitle">Ao confirmar um recebimento, adicione uma foto e um agradecimento — a publicação aparece na aba de transparência do seu perfil público.</p>
+
+                <div id="doacoesContainer" class="donations-grid"></div>
+            </section>
+
+            <section id="configuracoes" class="tab-content">
+                <div class="config-grid">
+                    <div class="config-card">
+                        <div class="config-icon">⚙️</div>
+                        <h4 class="config-title">Perfil da instituição</h4>
+                        <p class="config-desc">Nome, CNPJ, descrição, contatos, PIX, capa e fotos.</p>
+                        <button class="btn-outline-sm">Abrir</button>
+                    </div>
+                    <div class="config-card">
+                        <div class="config-icon">⚙️</div>
+                        <h4 class="config-title">Meu perfil pessoal</h4>
+                        <p class="config-desc">Seus dados de contato e as causas que te movem.</p>
+                        <button class="btn-outline-sm">Abrir</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL DE NOVO VOLUNTARIADO -->
+    <div id="modalVoluntariado" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal">&times;</button>
+            <h2 class="modal-title">Novo voluntariado</h2>
+
+            <form id="formNovoVoluntariado">
+                <div class="form-row">
+                    <div class="form-group flex-2">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" required>
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria">
+                            <option value="Crianças">Crianças</option>
+                            <option value="Animais">Animais</option>
+                            <option value="Meio Ambiente">Meio Ambiente</option>
+                            <option value="Educação">Educação</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao" rows="4"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade">
+                    </div>
+                    <div class="form-group flex-2">
+                        <label for="local">Local</label>
+                        <input type="text" id="local" name="local" placeholder="Sede da ONG, Rua X, 100">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="dataHora">Data e hora</label>
+                        <input type="datetime-local" id="dataHora" name="dataHora">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="duracao">Duração (horas)</label>
+                        <input type="number" id="duracao" name="duracao" min="1">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="vagas">Vagas</label>
+                        <input type="number" id="vagas" name="vagas" value="5" min="1">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-publicar">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE NOVA CAMPANHA -->
+    <div id="modalCampanha" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModalCampanha">&times;</button>
+            <h2 class="modal-title">Nova campanha</h2>
+
+            <form id="formNovaCampanha">
+                <div class="form-row">
+                    <div class="form-group flex-2">
+                        <label for="campanhaTitulo">Título da Campanha</label>
+                        <input type="text" id="campanhaTitulo" name="titulo" required>
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="campanhaCategoria">Categoria</label>
+                        <select id="campanhaCategoria" name="categoria">
+                            <option value="Alimentação">Alimentação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Abrigo">Abrigo</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="campanhaDescricao">Descrição</label>
+                    <textarea id="campanhaDescricao" name="descricao" rows="3" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-2">
+                        <label for="campanhaItens">Itens Necessários</label>
+                        <input type="text" id="campanhaItens" name="itens" placeholder="Ex: Ração, cobertas, agasalhos">
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="campanhaMeta">Meta de Itens</label>
+                        <input type="text" id="campanhaMeta" name="meta" placeholder="Ex: 100">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-publicar">Criar Campanha</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponte Solidária - Cadastrar Doação</title>
+    <link rel="stylesheet" href="cc.css">
+</head>
+
+<body>
+
+    <main class="container">
+        <section class="page-header">
+            <a href="../campanhas/campanhas.html" class="back-link">← Voltar para campanhas</a>
+
+            <h1 class="page-title">Cadastrar uma doação</h1>
+            <p class="page-subtitle">
+                Conte o que você tem para doar. Se precisar de transporte, sua doação entra na lista de caronas
+                solidárias.
+            </p>
+        </section>
+
+        <div class="campanha-info-card" id="campanhaInfoCard">
+            <span class="info-label">Destinatário da doação:</span>
+            <h3 class="info-ong" id="infoOngNome">Carregando ONG...</h3>
+            <p class="info-campanha" id="infoCampanhaTitulo">Campanha: ...</p>
+        </div>
+
+        <form id="formDoacao" class="doacao-form" onsubmit="event.preventDefault();">
+
+            <div class="form-group">
+                <label for="itemDoacao">O que você está doando?</label>
+                <input type="text" id="itemDoacao" placeholder="Ex.: 3 caixas de alimentos não perecíveis" required>
+            </div>
+
+            <div class="form-group">
+                <label for="detalhesDoacao">Detalhes</label>
+                <textarea id="detalhesDoacao" rows="4"
+                    placeholder="Estado dos itens, tamanhos, validade, observações de retirada..."></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="categoriaDoacao">Categoria</label>
+                    <select id="categoriaDoacao" required>
+                        <option value="Alimentação">Alimentação</option>
+                        <option value="Animais">Animais</option>
+                        <option value="Roupas e Calçados">Roupas e Calçados</option>
+                        <option value="Higiene e Limpeza">Higiene e Limpeza</option>
+                        <option value="Móveis e Utensílios">Móveis e Utensílios</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="volumeDoacao">Volume aproximado</label>
+                    <input type="text" id="volumeDoacao" placeholder="Ex.: 2 sacolas grandes, 1 caixa média" required>
+                </div>
+            </div>
+
+            <div class="toggle-box">
+                <div class="toggle-text">
+                    <strong>Preciso de carona solidária</strong>
+                    <p>Um voluntário que já for para a região pode levar sua doação.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleCarona">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="campos-retirada" id="camposRetirada">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cidadeRetirada">Cidade de retirada</label>
+                        <input type="text" id="cidadeRetirada" placeholder="Ex.: Lorena">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enderecoRetirada">Endereço de retirada</label>
+                        <input type="text" id="enderecoRetirada" placeholder="Rua, número, bairro">
+                    </div>
+                </div>
+
+                <p class="privacy-note">
+                    <strong>Seu endereço estará protegido:</strong> Ele será compartilhado apenas com o voluntário
+                    que aceitar realizar a entrega.
+                </p>
+            </div>
+
+            <button type="submit" class="btn-cadastrar">Cadastrar doação</button>
+
+        </form>
+    </main>
+
+    <script src="cc.js"></script>
+</body>
+
+</html>

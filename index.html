@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponte Solidária - Home</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="imagens/logo.png" alt="Logo Ponte Solidária" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="voluntariado/voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="./login/login.html" class="nav-link user-panel">Entrar</a>
+                <a href="./cadastro/cadastro.html" class="btn-create-action" id="createActionBtn">Criar ação</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sua ajuda pode chegar mais longe.</h1>
+                <p class="hero-description">
+                    Encontre ONGs, participe de voluntariados e faça doações que transformam vidas. Um só lugar para
+                    conectar quem quer ajudar com quem precisa de apoio.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="ongs/ongs.html" class="btn-primary">Quero doar</a>
+                    <a href="carona.solidaria/carona.html" class="btn-secondary">Quero transportar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como funciona a carona solidária</h2>
+            <p class="section-subtitle">Quatro passos simples, do cadastro da doação até a confirmação com foto pela
+                ONG.</p>
+
+            <div class="steps-grid">
+                <article class="step-card">
+                    <span class="step-number">1</span>
+                    <h3 class="step-title">Cadastre a doação</h3>
+                    <p class="step-text">Descreva o que você tem para doar, escolha a ONG e informe o endereço de
+                        retirada.</p>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">2</span>
+                    <h3 class="step-title">Encontramos a carona</h3>
+                    <p class="step-text">Quem já vai passar pela região se voluntaria para levar a doação até o destino.
+                    </p>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">3</span>
+                    <h3 class="step-title">Acompanhe o trajeto</h3>
+                    <p class="step-text">Doador e ONG acompanham cada etapa: aguardando, a caminho e entregue.</p>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">4</span>
+                    <h3 class="step-title">Recebimento confirmado</h3>
+                    <p class="step-text">A ONG confirma o recebimento com foto e comentário. Tudo aberto para todos
+                        verem.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-campaigns">
+        <div class="container">
+
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Campanhas em destaque</h2>
+                    <p class="section-subtitle">Busque por uma causa, uma ONG ou um item específico e veja quem precisa
+                        de ajuda agora.</p>
+                </div>
+                <a href="campanhas/campanhas.html" class="see-all-link">Ver todas</a>
+            </div>
+
+            <form class="search-bar-form" onsubmit="event.preventDefault();">
+                <div class="search-input-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input"
+                        placeholder="Buscar campanha, ONG ou item (ex.: cobertores)...">
+                    <button type="submit" class="btn-search">
+                        Buscar
+                    </button>
+                </div>
+            </form>
+
+            <div class="filter-chips-container">
+                <span class="filter-label">Filtre por tema:</span>
+                <div class="chips-group">
+                    <button class="chip-btn active">Todos</button>
+                    <button class="chip-btn">Animais</button>
+                    <button class="chip-btn">Crianças</button>
+                    <button class="chip-btn">Idosos</button>
+                    <button class="chip-btn">Saúde</button>
+                    <button class="chip-btn">Educação</button>
+                    <button class="chip-btn">Meio ambiente</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="partner-cta-section">
+        <div class="container">
+            <div class="partner-card">
+                <div class="partner-content">
+                    <h2 class="partner-title">Sua ONG ou marca quer entrar na rede?</h2>
+                    <p class="partner-text">
+                        Cadastre sua instituição em minutos e comece a receber doações, voluntários e caronas solidárias
+                        da nossa comunidade.
+                    </p>
+                </div>
+                <div class="partner-buttons">
+                    <a href="./cadastro/cadastro.html" class="btn-partner-primary">Cadastrar ONG</a>
+                    <a href="saiba.mais.pdf" target="_blank" class="btn-partner-secondary">Como funciona</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

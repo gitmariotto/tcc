@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-brand-green: #163B29;
+    --color-brand-green-hover: #0f2b1d;
+    --color-brand-terracotta: #B85633;
+    --color-brand-terracotta-hover: #9b4527;
+    --color-bg-page: #FAF9F6;
+    --color-bg-card: #FFFFFF;
+    --color-text-main: #555555;
+    --color-text-dark: #1A1A1A;
+    --color-border-card: rgba(0, 0, 0, 0.08);
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+}
+
+/* CONTAINER GERAL */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+main.container {
+    padding-bottom: 5rem;
+}
+
+/* CABEÇALHO TOPO (SEM BURACÕES) */
+.top-nav {
+    padding: 1rem 0;
+    background-color: var(--color-bg-page);
+}
+
+.back-link {
+    color: var(--color-brand-green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 0.75;
+}
+
+/* FOTO DE CAPA */
+.cover-photo {
+    height: 220px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200');
+    background-size: cover;
+    background-position: center;
+}
+
+/* CABEÇALHO DO PERFIL */
+.profile-header {
+    margin-top: -60px;
+    /* Sobreposição da foto na capa */
+    margin-bottom: 2rem;
+}
+
+.profile-info-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    background-color: var(--color-brand-green);
+    border-radius: 20px;
+    border: 4px solid var(--color-bg-page);
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+}
+
+.name-location {
+    margin-bottom: 8px;
+}
+
+.ong-name {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: var(--color-brand-green);
+    line-height: 1.1;
+}
+
+.ong-location {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.3rem;
+}
+
+.ong-location svg {
+    stroke: var(--color-brand-terracotta);
+}
+
+/* LAYOUT PRINCIPAL */
+.main-content {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* SIDEBAR DE CARDS */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: var(--color-bg-card);
+    padding: 1.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-border-card);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.info-card h3 {
+    font-family: var(--font-serif);
+    color: var(--color-brand-green);
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+}
+
+/* LISTA DE CONTATOS E ÍCONES TERRACOTA */
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.925rem;
+    color: var(--color-text-dark);
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    stroke: var(--color-brand-terracotta);
+    flex-shrink: 0;
+}
+
+.empty-msg {
+    color: var(--color-text-main);
+    font-size: 0.925rem;
+}
+
+/* ABAS (TABS) */
+.tabs {
+    background: #EAE8E4;
+    display: inline-flex;
+    padding: 5px;
+    border-radius: 12px;
+    gap: 0.4rem;
+    margin-bottom: 1.8rem;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--color-text-main);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background: var(--color-bg-card);
+    color: var(--color-brand-green);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ESTILOS PARA ALTERNÂNCIA DAS ABAS */
+.tab-content {
+    display: none; /* Esconde todas as abas por padrão */
+}
+
+.tab-content.active {
+    display: block; /* Exibe apenas a aba que tem a classe active */
+}

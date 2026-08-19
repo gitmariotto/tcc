@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --color-brand-green: #163B29;
+    --color-brand-green-hover: #0f2b1d;
+    --color-brand-terracotta: #B85633;
+    --color-brand-terracotta-hover: #9c4526;
+
+    --color-bg-page: #FAF9F6;
+    /* Off-White principal */
+    --color-bg-alt: #F3EFE6;
+    /* Off-White alternado */
+    --color-bg-card: #ffffff;
+
+    --color-text-main: #555555;
+    --color-text-dark: #222222;
+    --color-white: #ffffff;
+    --color-border: #E5E7EB;
+
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    --max-width: 1300px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    line-height: 1.5;
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: var(--color-bg-page);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- LOGO --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 42px;
+    /* Mantém a altura original para NÃO esticar o cabeçalho */
+    width: auto;
+    display: block;
+    object-fit: contain;
+
+    /* Aumenta a imagem sem alterar o tamanho do cabeçalho */
+    transform: scale(3.0);
+    transform-origin: left center;
+    /* Mantém a imagem alinhada à esquerda ao crescer */
+}
+
+/* --- NAV --- */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--color-text-dark);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-create-action {
+    background-color: var(--color-brand-terracotta);
+    color: var(--color-white);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.btn-create-action:hover {
+    background-color: var(--color-brand-terracotta-hover);
+}
+
+/* --- HERO --- */
+.hero {
+    position: relative;
+    min-height: 80vh;
+    background: url('https://i.pinimg.com/1200x/6d/0b/76/6d0b7670918099732fd087ff78d4c2f1.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(22, 59, 41, 0.94) 0%, rgba(22, 59, 41, 0.78) 50%, rgba(22, 59, 41, 0.2) 100%);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 1rem 2.25rem;
+    border-radius: 99px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--color-brand-terracotta);
+    color: var(--color-white);
+}
+
+.btn-secondary {
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-brand-terracotta-hover);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
+}
+
+/* --- COMO FUNCIONA --- */
+.how-it-works {
+    padding: 5rem 2rem;
+    background-color: var(--color-bg-page);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-main);
+    margin-bottom: 3.5rem;
+    max-width: 650px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.step-card {
+    background-color: var(--color-bg-card);
+    padding: 2.25rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    position: relative;
+}
+
+.step-number {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    color: var(--color-brand-terracotta);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    opacity: 0.85;
+}
+
+.step-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.75rem;
+}
+
+.step-text {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    line-height: 1.5;
+}
+
+/* --- CAMPANHAS EM DESTAQUE --- */
+.featured-campaigns {
+    padding: 5rem 2rem;
+    background-color: var(--color-bg-alt);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.see-all-link {
+    color: var(--color-brand-green);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.see-all-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Barra de Busca */
+.search-bar-form {
+    margin-bottom: 2rem;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.search-icon {
+    color: #9CA3AF;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.search-input::placeholder {
+    color: #9CA3AF;
+}
+
+.btn-search {
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-search:hover {
+    background-color: var(--color-brand-green-hover);
+}
+
+/* Chips de Filtro */
+.filter-chips-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+.chips-group {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.chip-btn {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chip-btn:hover {
+    border-color: var(--color-brand-green);
+    color: var(--color-brand-green);
+}
+
+.chip-btn.active {
+    background-color: var(--color-brand-green);
+    border-color: var(--color-brand-green);
+    color: var(--color-white);
+}
+
+/* --- CTA ONGs E PARCEIROS --- */
+.partner-cta-section {
+    padding: 5rem 2rem;
+    background-color: var(--color-bg-page);
+}
+
+.partner-card {
+    background-color: var(--color-brand-green);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    box-shadow: 0 10px 30px rgba(22, 59, 41, 0.12);
+}
+
+.partner-content {
+    max-width: 620px;
+}
+
+.partner-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-white);
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.01em;
+}
+
+.partner-text {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.partner-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.btn-partner-primary {
+    background-color: var(--color-brand-terracotta);
+    color: var(--color-white);
+    padding: 0.9rem 2rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-partner-primary:hover {
+    background-color: var(--color-brand-terracotta-hover);
+}
+
+.btn-partner-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--color-white);
+    padding: 0.9rem 2rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-partner-secondary:hover {
+    border-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .partner-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2.5rem 2rem;
+    }
+
+    .partner-title {
+        font-size: 2rem;
+    }
+
+    .partner-buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-partner-primary,
+    .btn-partner-secondary {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .filter-chips-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

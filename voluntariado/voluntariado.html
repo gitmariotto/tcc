@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponte Solidária - Voluntariado</title>
+
+    <!-- 1º O CSS Global com os estilos do cabeçalho e logo -->
+    <link rel="stylesheet" href="../global.css">
+    <!-- 2º O CSS específico da página de Voluntariado -->
+    <link rel="stylesheet" href="voluntariado.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../imagens/logo.png" alt="Logo Ponte Solidária" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="../campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="../carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="../saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../login/login.html" class="nav-link user-panel">Entrar</a>
+                <a href="../cadastro/cadastro.html" class="btn-create-action" id="createActionBtn">Criar ação</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <section class="page-header">
+                <h1 class="page-title">Missões de voluntariado</h1>
+                <p class="page-subtitle">
+                    Tarefas curtas e objetivas publicadas pelas ONGs. Escolha uma que caiba na sua agenda.
+                </p>
+            </section>
+
+            <div class="search-box">
+                <input type="text" id="inputBusca" class="search-input"
+                    placeholder="Buscar por missão, ONG ou cidade...">
+            </div>
+
+            <div class="pills-container">
+                <button class="pill active" data-categoria="todas">Todas as causas</button>
+                <button class="pill" data-categoria="Animais">Animais</button>
+                <button class="pill" data-categoria="Crianças">Crianças</button>
+                <button class="pill" data-categoria="Idosos">Idosos</button>
+                <button class="pill" data-categoria="Saúde">Saúde</button>
+                <button class="pill" data-categoria="Educação">Educação</button>
+                <button class="pill" data-categoria="Meio ambiente">Meio ambiente</button>
+                <button class="pill" data-categoria="Alimentação">Alimentação</button>
+            </div>
+
+            <section class="banner-divulgacao">
+                <div class="banner-content">
+                    <div class="banner-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a24c29" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                    </div>
+                    <div class="banner-text">
+                        <span class="banner-tag">VOLUNTARIADO DE DIVULGAÇÃO</span>
+                        <h2 class="banner-title">Não tem tempo? Ajude divulgando</h2>
+                        <p class="banner-description">
+                            Compartilhar leva 30 segundos e alcança novos doadores, voluntários e transportadores para
+                            as ONGs. Baixe a arte pronta e publique nas suas redes.
+                        </p>
+                        <div class="banner-buttons">
+                            <button class="btn-banner-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                </svg>
+                                Compartilhar agora
+                            </button>
+                            <button class="btn-banner-secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Ver arte compartilhável
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="missoes-grid" id="missoesGrid">
+            </section>
+
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="modalConfirmacao">
+        <div class="modal-container">
+
+            <div id="modalStepConfirm" class="modal-body">
+                <h2 class="modal-title">Confirmar inscrição</h2>
+                <p class="modal-subtitle">Você quer participar desta ação?</p>
+
+                <div class="modal-card-info">
+                    <h3 class="modal-action-title" id="modalTitulo">--</h3>
+                    <p class="modal-ong-info" id="modalOng">--</p>
+
+                    <div class="modal-details-list">
+                        <p>📅 <strong>Data:</strong> <span id="modalData">--</span></p>
+                        <p>🕒 <strong>Horário:</strong> <span id="modalHorario">--</span></p>
+                        <p>📍 <strong>Local:</strong> <span id="modalLocal">--</span></p>
+                    </div>
+                </div>
+
+                <p class="modal-warning">
+                    Ao confirmar, seu interesse será enviado para a ONG. Certifique-se de que você poderá comparecer no
+                    dia e horário informados.
+                </p>
+
+                <div class="modal-actions">
+                    <button class="btn-modal-cancel" onclick="fecharModal()">Cancelar</button>
+                    <button class="btn-modal-confirm" id="btnConfirmarInscricao">Confirmar inscrição</button>
+                </div>
+            </div>
+
+            <div id="modalStepSuccess" class="modal-body hidden">
+                <h2 class="modal-title">Inscrição realizada!</h2>
+                <p class="modal-description">
+                    Sua inscrição foi enviada para a <strong id="modalSuccessOng">ONG</strong>. A ONG poderá entrar em
+                    contato com você para confirmar os detalhes da ação.
+                </p>
+
+                <div class="modal-actions single-action">
+                    <button class="btn-modal-confirm" onclick="fecharModal()">Voltar para voluntariado</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="voluntariado.js"></script>
+</body>
+
+</html>

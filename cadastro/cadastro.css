@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --color-brand-green: #163B29;
+    --color-brand-green-hover: #0f2b1d;
+    --color-brand-terracotta: #B85633;
+
+    --color-bg-page: #FAF9F6;
+    /* Off-White */
+    --color-bg-card: #FFFFFF;
+    /* Branco puro para inputs e cards */
+    --color-bg-card-selected: #F7F3EE;
+
+    --color-text-main: #555555;
+    --color-text-dark: #222222;
+    --color-border: #D1D5DB;
+    /* Borda cinza suave para contraste */
+    --color-border-active: #B85633;
+    /* Borda terracota no card selecionado */
+
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    min-height: 100vh;
+}
+
+/* --- ESTRUTURA SPLIT SCREEN --- */
+.signup-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* BANNER COM OPACIDADE INTERMEDIÁRIA (60%) */
+.signup-banner {
+    flex: 1;
+    background-image: linear-gradient(rgba(22, 59, 41, 0.6),
+            rgba(22, 59, 41, 0.6)),
+        url('https://i.pinimg.com/1200x/70/95/0c/70950c4615ecca81f0225bbae2b545d0.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* LADO DIREITO: CONTEÚDO */
+.signup-content {
+    flex: 1;
+    background-color: var(--color-bg-page);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    overflow-y: auto;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 580px;
+}
+
+.page-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    margin-bottom: 1.75rem;
+}
+
+/* --- CARDS DE PERFIL --- */
+.profile-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-card {
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.profile-card:hover {
+    border-color: var(--color-brand-terracotta);
+}
+
+.profile-card.active {
+    border-color: var(--color-border-active);
+    background-color: var(--color-bg-card-selected);
+    box-shadow: 0 4px 12px rgba(184, 86, 51, 0.08);
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-brand-green);
+    margin-bottom: 0.35rem;
+}
+
+.card-desc {
+    font-size: 0.825rem;
+    color: var(--color-text-main);
+    line-height: 1.35;
+}
+
+/* --- FORMULÁRIO & CAMPOS DE INPUT --- */
+.section-heading {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-brand-green);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-brand-green);
+}
+
+input,
+select,
+textarea {
+    background-color: var(--color-bg-card);
+    /* Fundo branco puro */
+    border: 1px solid var(--color-border);
+    /* Borda cinza suave para contraste */
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-brand-green);
+    box-shadow: 0 0 0 3px rgba(22, 59, 41, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9CA3AF;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Seção ONG oculta por padrão */
+.ong-fields {
+    display: none;
+}
+
+.ong-fields.active {
+    display: block;
+}
+
+/* --- BOTÃO SUBMIT --- */
+.btn-submit {
+    background-color: var(--color-brand-green);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 99px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-brand-green-hover);
+}
+
+/* --- FOOTER / LINK PARA LOGIN --- */
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.link-login {
+    color: var(--color-brand-terracotta);
+    font-size: 0.925rem;
+    font-weight: 500;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.link-login:hover {
+    opacity: 0.85;
+}
+
+/* RESPONSIVIDADE (Telas menores) */
+@media (max-width: 900px) {
+    .signup-wrapper {
+        flex-direction: column;
+    }
+
+    .signup-banner {
+        display: none;
+    }
+
+    .signup-content {
+        padding: 2rem 1.25rem;
+    }
+
+    .profile-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

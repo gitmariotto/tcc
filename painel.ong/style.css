@@ -1,0 +1,918 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-page: #FAF9F6;
+    --sidebar-bg: #FFFFFF;
+    --primary-color: #b85633;
+    --primary-hover: #9b4527;
+    --text-dark: #1a3c2f;
+    --text-muted: #555555;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --card-bg: #FFFFFF;
+    --accent-light: #f4efea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-muted);
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+}
+
+.ong-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.ong-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-top: 0.2rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+}
+
+.nav-item.active {
+    background-color: var(--accent-light);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.badge {
+    margin-left: auto;
+    background-color: #ECEAE4;
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    padding: 2.5rem 3rem;
+    max-width: 1200px;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+}
+
+.section-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+/* BOTÕES GLOBAIS */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.65rem 1.25rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid rgba(26, 60, 47, 0.2);
+    padding: 0.65rem 1.25rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-outline:hover {
+    background-color: #f7f5f0;
+}
+
+/* ABAS */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* VISÃO GERAL */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--text-dark);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.quick-actions-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.box-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.actions-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.section-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+/* CARDS DE VOLUNTARIADO */
+.vol-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.vol-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.vol-meta {
+    font-size: 0.82rem;
+    color: #777;
+    display: block;
+    margin: 0.2rem 0 0.4rem;
+}
+
+.vol-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.vol-status-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slots-info {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background: #fdf2f2;
+    color: #d93838;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+/* CARDS DE DOAÇÃO */
+.donations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+}
+
+.donation-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.don-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.don-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.don-badge {
+    background-color: #ECEAE4;
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 99px;
+    font-weight: 500;
+}
+
+.don-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.btn-don-action {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* CONFIGURAÇÕES */
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+}
+
+.config-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.config-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.config-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+}
+
+.config-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.btn-outline-sm {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* MODAL DE NOVO VOLUNTARIADO (POP-UP) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--bg-page);
+    width: 90%;
+    max-width: 650px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.modal-title {
+    font-family: 'DM Serif Display', serif;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.btn-publicar {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 99px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-publicar:hover {
+    background-color: var(--primary-hover);
+}
+
+
+
+
+
+
+
+/* CARD DO PAINEL DA ONG */
+.card-voluntariado-painel {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vol-titulo {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #163B29;
+    font-size: 1.35rem;
+    margin-bottom: 0.2rem;
+}
+
+.vol-meta {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 0.6rem;
+}
+
+.vol-desc {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+/* CAIXA BEGE INTERNA */
+.vol-inscritos-box {
+    background-color: #F8F6F0;
+    border: 1px solid #EAE6DC;
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.vol-inscritos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vol-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #163B29;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* BOTÃO VER / OCULTAR INSCRITOS */
+.btn-toggle-inscritos {
+    background: transparent;
+    border: none;
+    color: #163B29;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    transition: all 0.2s;
+}
+
+/* ESTILO QUANDO EXPANDIDO (COM A BORDA EM VOLTA DO BOTÃO) */
+.btn-toggle-inscritos.active {
+    border: 1.5px solid #B85633;
+    color: #163B29;
+}
+
+/* CARDS BRANCOS DOS INSCRITOS DENTRO DA CAIXA BEGE */
+.lista-inscritos-content {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.card-inscrito-item {
+    background: #FFFFFF;
+    border: 1px solid #EAE6DC;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.inscrito-nome {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #163B29;
+    margin-bottom: 0.2rem;
+}
+
+.inscrito-contato {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.inscrito-data {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* BOTAO EXCLUIR */
+.btn-excluir {
+    background: transparent;
+    border: none;
+    color: #163B29;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-excluir:hover {
+    text-decoration: underline;
+    color: #B85633;
+}
+
+
+/* ALINHAMENTO FIXO DO CARD */
+.card-voluntariado-painel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.vol-content-left {
+    flex: 1; /* Ocupa todo o espaço disponível na esquerda */
+}
+
+.vol-content-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: auto; /* Força todo o grupo a encostar na direita */
+}
+
+.vol-inscritos-box {
+    margin-bottom: 0; /* Remove margem inferior para alinhar perfeitamente com o botão excluir */
+}
+
+
+
+
+
+/* CONTAINER DA CAMPANHA */
+.card-campanha-painel {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #EAE6DC;
+}
+
+.campanha-title-badge {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.campanha-titulo {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #163B29;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.badge-status {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-status.pausada {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.campanha-desc {
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+.campanha-meta-info p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* BOTÃO INICIAL DE EDITAR */
+.btn-editar-campanha {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.8rem;
+}
+
+/* CAIXA EXPANSÍVEL BORDADA */
+.box-editar-campanha {
+    margin-top: 1.2rem;
+    border: 1px solid #E5E0D8;
+    border-radius: 24px;
+    padding: 1.5rem;
+    background: #FAFAFA;
+}
+
+.edit-top-buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn-cancelar-edit {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-pausar-edit, .btn-excluir-edit {
+    background: transparent;
+    border: none;
+    color: #163B29;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-excluir-edit:hover {
+    color: #B85633;
+}
+
+.edit-form-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #163B29;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* CAMPOS DO FORMULÁRIO */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    border: 1px solid #DDD;
+    border-radius: 12px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    background: #FFF;
+    outline: none;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* BOTÃO ENVIAR FOTO */
+.upload-btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-upload {
+    border: 1px solid #CCC;
+    background: #FFF;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* CAIXA BEGE DA META */
+.box-meta-check {
+    background: #F8F6F0;
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.margin-top-sm {
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* BOTÃO SALVAR ALTERAÇÕES */
+.btn-salvar-alteracoes {
+    background: #B85633;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-salvar-alteracoes:hover {
+    background: #A04728;
+}
+
+
+
+
+/* ESTILOS DO MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-container {
+    background: #FAFAFA;
+    border-radius: 24px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #163B29;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.btn-fechar-modal {
+    background: #B85633;
+    color: #FFF;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+

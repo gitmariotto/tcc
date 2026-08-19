@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponte Solidária - Perfil da ONG</title>
+
+    <!-- 1º O CSS Global com os estilos do cabeçalho e logo -->
+    <link rel="stylesheet" href="../global.css">
+    <!-- 2º O CSS específico da página de Perfil da ONG -->
+    <link rel="stylesheet" href="po.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../imagens/logo.png" alt="Logo Ponte Solidária" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="../campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="../carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="../voluntariado/voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="../saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../login/login.html" class="nav-link user-panel">Entrar</a>
+                <a href="../cadastro/cadastro.html" class="btn-create-action" id="createActionBtn">Criar ação</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="cover-photo">
+        <img id="ongCapa" src="" alt="Capa da ONG" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+    </section>
+
+    <main class="container">
+        <section class="profile-header">
+            <div class="profile-info-wrapper">
+                <img id="ongFoto" src="" alt="Logo da ONG" class="profile-pic">
+                <div class="name-location">
+                    <h1 id="ongNome" class="ong-name">Carregando...</h1>
+                    <span class="ong-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span id="ongCidade">---</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content">
+
+            <aside class="sidebar">
+                <div class="info-card">
+                    <h3>Sobre a ONG</h3>
+                    <p id="ongCausa"
+                        style="font-weight: 600; color: var(--color-brand-terracotta, #B85633); margin-bottom: 0.5rem;"></p>
+                    <p id="ongDescricao" style="line-height: 1.5; font-size: 0.925rem;"></p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Contatos</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span id="ongEndereco">---</span>
+                        </li>
+                        <li>
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span id="ongEmail">---</span>
+                        </li>
+                        <li>
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            <span id="ongTelefone">---</span>
+                        </li>
+                        <li>
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"></path>
+                            </svg>
+                            <span id="ongRedes">---</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Fotos</h3>
+                    <div id="galeriaOngContainer">
+                        <p class="empty-msg">Esta ONG ainda não publicou fotos.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="feed-section">
+                <!-- NAVEGAÇÃO DE ABAS (ABA TRANSPARÊNCIA MANTIDA) -->
+                <nav class="tabs">
+                    <button class="tab-btn active" data-tab="campanhas">Campanhas</button>
+                    <button class="tab-btn" data-tab="voluntariado">Voluntariado</button>
+                    <button class="tab-btn" data-tab="transparencia">Transparência</button>
+                </nav>
+
+                <!-- CONTEÚDO DA ABA CAMPANHAS -->
+                <div id="tabCampanhas" class="tab-content active">
+                    <div id="campanhasOngContainer">
+                        <p class="empty-msg">Nenhuma campanha publicada ainda.</p>
+                    </div>
+                </div>
+
+                <!-- CONTEÚDO DA ABA VOLUNTARIADO -->
+                <div id="tabVoluntariado" class="tab-content">
+                    <div id="voluntariadosOngContainer">
+                        <p class="empty-msg">Nenhum voluntariado disponível no momento.</p>
+                    </div>
+                </div>
+
+                <!-- CONTEÚDO DA ABA TRANSPARÊNCIA (SEM CHAVE PIX/PRESTAÇÃO DE CONTAS) -->
+                <div id="tabTransparencia" class="tab-content">
+                    <div class="info-card">
+                        <h3>Transparência</h3>
+                        <p class="empty-msg" style="padding: 1rem 0 0 0;">Nenhuma informação de transparência disponibilizada no momento.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="po.js"></script>
+</body>
+
+</html>

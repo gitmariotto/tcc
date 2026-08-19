@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --color-brand-green: #163B29;
+    --color-brand-green-hover: #0f2b1d;
+    --color-brand-terracotta: #B85633;
+    --color-brand-terracotta-hover: #9c4526;
+
+    --color-bg-page: #FAF9F6;
+    --color-input-bg: #FFFFFF;
+
+    --color-text-main: #555555;
+    --color-text-dark: #222222;
+    --color-border: #D1D5DB;
+    --color-border-focus: #163B29;
+
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    min-height: 100vh;
+}
+
+/* Split Screen Layout */
+.login-split {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.login-banner {
+    flex: 1;
+    position: relative;
+    /* Imagem atualizada */
+    background-image: url('https://i.pinimg.com/736x/0b/cb/07/0bcb077e40a779547f9274c0a747b682.jpg');
+    background-size: cover;
+    background-position: center;
+    display: none;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(22, 59, 41, 0.35) 0%,
+            rgba(22, 59, 41, 0.75) 100%);
+}
+
+.login-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem;
+    position: relative;
+    background-color: var(--color-bg-page);
+}
+
+.back-link {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--color-brand-green);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--color-brand-green);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.login-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    margin-bottom: 2.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: #9CA3AF;
+}
+
+.form-input:focus {
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(22, 59, 41, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--color-brand-green);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 99px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-brand-green-hover);
+}
+
+.form-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.signup-link {
+    color: var(--color-brand-terracotta);
+    text-decoration: underline;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.signup-link:hover {
+    color: var(--color-brand-terracotta-hover);
+}
+
+@media (min-width: 900px) {
+    .login-banner {
+        display: block;
+    }
+}

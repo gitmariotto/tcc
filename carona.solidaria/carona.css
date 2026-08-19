@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-brand-green: #1a3c2f;
+    --color-brand-terracotta: #b85633;
+    --color-brand-terracotta-hover: #9b4527;
+    --color-bg-page: #FAF9F6;
+    --color-bg-card: #FFFFFF;
+    --color-bg-box: #f4efea;
+    --color-text-main: #555555;
+    --color-text-dark: #222222;
+    --color-border: rgba(0, 0, 0, 0.08);
+    --font-serif: Georgia, 'DM Serif Display', serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* HEADER */
+.page-header {
+    margin-bottom: 2.5rem;
+}
+
+.back-link {
+    color: var(--color-brand-green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.page-title {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    max-width: 600px;
+}
+
+.btn-cadastrar-doacao {
+    background-color: var(--color-brand-terracotta);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* GRID & CARDS */
+.caronas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.carona-card {
+    background: var(--color-bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.categoria-tag {
+    color: var(--color-brand-terracotta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-badge {
+    background-color: #ECEAE4;
+    color: var(--color-text-main);
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+}
+
+.item-titulo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.4rem;
+}
+
+.item-descricao {
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.volume-info {
+    font-size: 0.88rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+}
+
+.locais-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.local-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--color-text-dark);
+}
+
+.local-icon {
+    stroke: var(--color-brand-terracotta);
+    flex-shrink: 0;
+}
+
+.ong-link {
+    text-decoration: underline;
+    color: var(--color-text-dark);
+}
+
+.aviso-endereco {
+    font-size: 0.82rem;
+    color: #777;
+    margin-bottom: 1.2rem;
+    line-height: 1.35;
+}
+
+/* BOTÕES DO CARD */
+.btn-aceitar {
+    background-color: var(--color-brand-terracotta);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.75rem 1.4rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: max-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-ver-dados {
+    background-color: #ffffff;
+    color: var(--color-brand-green);
+    border: 1px solid rgba(26, 60, 47, 0.3);
+    padding: 0.65rem 1.2rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.88rem;
+    cursor: pointer;
+    width: max-content;
+    transition: all 0.2s ease;
+}
+
+.btn-ver-dados:hover {
+    background-color: #f7f5f0;
+}
+
+/* MODAL */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-container {
+    background-color: #fcfbfa;
+    border-radius: 20px;
+    max-width: 480px;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.2rem;
+}
+
+.modal-subtext {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* CARDS INTERNOS DO MODAL */
+.modal-card-box {
+    background-color: var(--color-bg-box);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-box-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.8rem;
+}
+
+.modal-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+}
+
+.modal-info-item svg {
+    stroke: var(--color-brand-terracotta);
+    flex-shrink: 0;
+}
+
+.volume-text {
+    font-size: 0.88rem;
+    color: #555;
+    margin-top: 0.4rem;
+}
+
+/* CALLOUT DE PRIVACIDADE */
+.privacy-callout {
+    background-color: #f7ede8;
+    border: 1px solid rgba(184, 86, 51, 0.2);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.privacy-callout svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-confirmar-retirada {
+    background-color: var(--color-brand-terracotta);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-confirmar-retirada:hover {
+    background-color: var(--color-brand-terracotta-hover);
+}
+
+/* TOAST NOTIFICATION DE CONFIRMAÇÃO */
+.toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 90%;
+}
+
+.toast-notification.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    width: 22px;
+    height: 22px;
+    background-color: #222222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.toast-notification span {
+    font-size: 0.88rem;
+    color: #222222;
+    font-weight: 500;
+}
