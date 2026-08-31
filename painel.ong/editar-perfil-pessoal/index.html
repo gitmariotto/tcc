@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil Pessoal - Ponte Solidária</title>
+
+    <!-- Fontes do projeto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Global e CSS da página -->
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="edit-page-container">
+        <!-- Topo da página -->
+        <header class="page-top-header">
+            <div class="header-text-group">
+                <h1 class="page-main-title">Editar perfil pessoal</h1>
+                <p class="page-main-subtitle">Essas informações aparecem no seu perfil e interações na plataforma.</p>
+            </div>
+            <div class="header-btn-group">
+                <a href="../index.html" class="btn-top-outline">Voltar ao painel</a>
+            </div>
+        </header>
+
+        <!-- Formulário dentro do card branco -->
+        <div class="edit-card-container">
+            <form id="formPerfilPessoal">
+
+                <!-- Nome Completo -->
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome completo</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Seu nome" required>
+                </div>
+
+                <!-- Biografia / Sobre mim -->
+                <div class="form-group">
+                    <label for="sobreMim">Sobre você</label>
+                    <textarea id="sobreMim" name="sobreMim" rows="3"
+                        placeholder="Conte um pouco sobre você e seu envolvimento social..."></textarea>
+                </div>
+
+                <!-- Causas de Interesse (Múltipla Seleção) -->
+                <div class="form-group">
+                    <label>Causas de interesse <span class="label-hint">(selecione quantas quiser)</span></label>
+                    <div class="causas-grid">
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Animais">
+                            <span class="pill-badge">Animais</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Crianças">
+                            <span class="pill-badge">Crianças</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Educação">
+                            <span class="pill-badge">Educação</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Meio Ambiente">
+                            <span class="pill-badge">Meio Ambiente</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Saúde">
+                            <span class="pill-badge">Saúde</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Alimentação">
+                            <span class="pill-badge">Alimentação</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Idosos">
+                            <span class="pill-badge">Idosos</span>
+                        </label>
+                        <label class="causa-pill">
+                            <input type="checkbox" name="causas" value="Cultura">
+                            <span class="pill-badge">Cultura</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Localização: Cidade e Estado -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Ex: Lorena">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" name="estado" placeholder="Ex: SP" maxlength="2">
+                    </div>
+                </div>
+
+                <!-- Contatos: E-mail e Telefone -->
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="email">E-mail de contato</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone / WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <!-- Botão de Salvar -->
+                <div class="form-actions-bottom">
+                    <button type="submit" class="btn-save-submit">Salvar alterações</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

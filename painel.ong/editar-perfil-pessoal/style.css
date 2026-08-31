@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f7f6f1;
+    color: #2b2b2b;
+    padding: 2.5rem 1rem;
+}
+
+.edit-page-container {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+/* Header superior */
+.page-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.page-main-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 2.3rem;
+    color: #173829;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.page-main-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.header-btn-group {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-top-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: #374151;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-top-outline:hover {
+    background-color: #ffffff;
+    border-color: #9ca3af;
+}
+
+/* Card Branco */
+.edit-card-container {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Form Layout */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.label-hint {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dcdfe4;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #173829;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Grids */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* Seleção de Causas (Tags/Pills) */
+.causas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+}
+
+.causa-pill {
+    cursor: pointer;
+    user-select: none;
+}
+
+.causa-pill input {
+    display: none;
+}
+
+.causa-pill .pill-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #dcdfe4;
+    background-color: #ffffff;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.causa-pill input:checked+.pill-badge {
+    background-color: #173829;
+    border-color: #173829;
+    color: #ffffff;
+}
+
+.causa-pill:hover .pill-badge {
+    border-color: #173829;
+}
+
+/* Botão de Salvar */
+.form-actions-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.btn-save-submit {
+    background-color: #173829;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.75rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-save-submit:hover {
+    background-color: #0f271c;
+}
+
+/* Responsividade */
+@media (max-width: 680px) {
+    .page-top-header {
+        flex-direction: column;
+    }
+
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-card-container {
+        padding: 1.5rem;
+    }
+}

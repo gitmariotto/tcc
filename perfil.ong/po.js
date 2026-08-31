@@ -107,7 +107,7 @@ const campanhasFicticias = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Pega o ID da ONG vindo da URL (ex: po.html?id=2)
+    // 1. Pega o ID da ONG vindo da URL (ex: perfil.html?id=2)
     const urlParams = new URLSearchParams(window.location.search);
     const ongId = parseInt(urlParams.get('id')) || 2; // Padrão é UPA (ID 2)
 
@@ -152,14 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ongCapa').style.display = 'block';
     }
 
-    // Renderiza Galeria
+    // 5. Renderiza Galeria
     renderizarGaleria(ong.galeria);
 
-    // Renderiza conteúdos das abas
+    // 6. Renderiza conteúdos das abas
     renderizarCampanhasDoPerfil(ong.id);
     renderizarVoluntariadosDoPerfil();
+    renderizarTransparenciaDoPerfil();
 
-    // Configura o clique das Abas
+    // 7. Configura o clique das Abas
     configurarSistemaDeAbas();
 });
 
@@ -181,9 +182,14 @@ function configurarSistemaDeAbas() {
 
             // Ativa o container correspondente
             if (targetTab === 'campanhas') {
-                document.getElementById('tabCampanhas').classList.add('active');
+                const el = document.getElementById('tabCampanhas');
+                if (el) el.classList.add('active');
             } else if (targetTab === 'voluntariado') {
-                document.getElementById('tabVoluntariado').classList.add('active');
+                const el = document.getElementById('tabVoluntariado');
+                if (el) el.classList.add('active');
+            } else if (targetTab === 'transparencia') {
+                const el = document.getElementById('tabTransparencia');
+                if (el) el.classList.add('active');
             }
         });
     });
@@ -207,7 +213,7 @@ function renderizarCampanhasDoPerfil(ongId) {
     const campanhasDaOng = campanhasFicticias.filter(c => c.ongId === ongId);
 
     if (campanhasDaOng.length === 0) {
-        containerCampanhas.innerHTML = `<p class="empty-msg">Nenhuma campanha ativa no momento para esta ONG.</p>`;
+        containerCampanhas.innerHTML = `<p class="empty-msg" style="color: #777;">Nenhuma campanha ativa no momento para esta ONG.</p>`;
         return;
     }
 
@@ -235,11 +241,10 @@ function renderizarVoluntariadosDoPerfil() {
     const container = document.getElementById('voluntariadosOngContainer');
     if (!container) return;
 
-    // Busca os voluntariados publicados via localStorage
     const todosVoluntariados = JSON.parse(localStorage.getItem('siteVoluntariadosData')) || [];
 
     if (todosVoluntariados.length === 0) {
-        container.innerHTML = '<p class="empty-msg">Nenhum voluntariado disponível no momento.</p>';
+        container.innerHTML = '<p class="empty-msg" style="color: #777;">Nenhum voluntariado disponível no momento.</p>';
         return;
     }
 
@@ -266,6 +271,44 @@ function renderizarVoluntariadosDoPerfil() {
             </div>
         `;
     }).join('');
+}
+
+// ---------------- TRANSPARÊNCIA (RECEBIMENTOS CONFIRMADOS) ----------------
+function renderizarTransparenciaDoPerfil() {
+    const container = document.getElementById('transparenciaOngContainer');
+    if (!container) return;
+
+    const listaTransparencia = JSON.parse(localStorage.getItem('siteTransparenciaData')) || [];
+
+    if (listaTransparencia.length === 0) {
+        container.innerHTML = '<p class="empty-msg" style="color: #777;">Nenhuma confirmação de doação publicada ainda.</p>';
+        return;
+    }
+
+    container.innerHTML = listaTransparencia.map(t => `
+        <div style="background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span style="background: #E8F5E9; color: #2E7D32; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">
+                    ✓ Doação Recebida
+                </span>
+                <span style="font-size: 0.8rem; color: #888;">${t.data || ''}</span>
+            </div>
+
+            <h4 style="font-size: 1.15rem; font-weight: 600; color: #163B29; margin-bottom: 0.4rem;">
+                ${t.item}
+            </h4>
+
+            <p style="font-size: 0.92rem; color: #444; line-height: 1.45; margin-bottom: ${t.foto ? '1rem' : '0'};">
+                "${t.mensagem}"
+            </p>
+
+            ${t.foto ? `
+                <div style="width: 100%; max-height: 280px; border-radius: 12px; overflow: hidden; margin-top: 0.8rem; background: #f0f0f0;">
+                    <img src="${t.foto}" alt="Comprovante de entrega / foto da doação" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+            ` : ''}
+        </div>
+    `).join('');
 }
 
 function inscreverVoluntarioPublico(id) {

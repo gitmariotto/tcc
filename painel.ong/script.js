@@ -6,14 +6,24 @@ const dadosIniciaisVoluntariados = [
         data: "15/07/2026, 14:23",
         duracao: "4h",
         vagasTotal: 8,
-        inscritos: ["Maria Silva"], // Guarda a lista/nome de quem se inscreveu
+        inscritos: ["Maria Silva"],
         descricao: "Ajuda na organização do espaço e suporte aos animais durante a feira de doação.",
         ongNome: "União Protetora dos Animais",
         ongSigla: "UPA"
     }
 ];
 
-// Inicializa ou recupera os voluntariados do localStorage
+const dadosIniciaisDoacoes = [
+    { id: 301, item: "3 pacote de ração", status: "Em transporte", observacao: "vegergregeg" },
+    { id: 302, item: "3 pacote de ração", status: "Recebido", observacao: "ewherhhhwe" },
+    { id: 303, item: "ração", status: "Recebido", observacao: "hegwhbshs" }
+];
+
+// ==========================================================
+// PERSISTÊNCIA NO LOCALSTORAGE
+// ==========================================================
+
+// Voluntariados
 function obterVoluntariadosSalvos() {
     const salvos = localStorage.getItem('siteVoluntariadosData');
     if (!salvos) {
@@ -23,20 +33,65 @@ function obterVoluntariadosSalvos() {
     return JSON.parse(salvos);
 }
 
-// Salva voluntariados de volta no localStorage
 function salvarVoluntariados(lista) {
     localStorage.setItem('siteVoluntariadosData', JSON.stringify(lista));
+}
+
+// Doações
+function obterDoacoesSalvas() {
+    const salvos = localStorage.getItem('siteDoacoesData');
+    if (!salvos) {
+        localStorage.setItem('siteDoacoesData', JSON.stringify(dadosIniciaisDoacoes));
+        return dadosIniciaisDoacoes;
+    }
+    return JSON.parse(salvos);
+}
+
+function salvarDoacoes(lista) {
+    localStorage.setItem('siteDoacoesData', JSON.stringify(lista));
+}
+
+// Postagens de Transparência (Perfil Público)
+function obterTransparenciaSalva() {
+    const salvos = localStorage.getItem('siteTransparenciaData');
+    return salvos ? JSON.parse(salvos) : [];
+}
+
+function salvarTransparencia(lista) {
+    localStorage.setItem('siteTransparenciaData', JSON.stringify(lista));
+}
+
+// Utilitário para comprimir imagem antes de salvar no localStorage
+function comprimirImagem(file, callback) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const maxWidth = 800;
+            const scaleSize = maxWidth / img.width;
+
+            if (img.width > maxWidth) {
+                canvas.width = maxWidth;
+                canvas.height = img.height * scaleSize;
+            } else {
+                canvas.width = img.width;
+                canvas.height = img.height;
+            }
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            callback(canvas.toDataURL('image/jpeg', 0.7));
+        };
+    };
 }
 
 const ongDados = {
     nomeCompleto: "União Protetora dos Animais",
     sigla: "UPA",
     descricao: "Acompanhe suas campanhas, voluntariados, doações a caminho e confirme os recebimentos.",
-    estatisticas: {
-        campanhasCriadas: 1,
-        aguardandoTransporte: 0,
-        entregasConcluidas: 4
-    },
     campanhas: [
         {
             id: 101,
@@ -49,11 +104,6 @@ const ongDados = {
             meta: "100 itens",
             status: "Ativa"
         }
-    ],
-    doacoes: [
-        { id: 301, item: "3 pacote de ração", status: "Em transporte", observacao: "vegergregeg" },
-        { id: 302, item: "3 pacote de ração", status: "Entregue", observacao: "ewherhhhwe" },
-        { id: 303, item: "ração", status: "Entregue", observacao: "hegwhbshs" }
     ]
 };
 
@@ -70,19 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (elSidebarName) elSidebarName.textContent = siglaExibicao;
     if (elMainName) elMainName.textContent = `${nomeExibicao} (${siglaExibicao})`;
 
-    // Preenche Estatísticas
-    const listaVoluntariados = obterVoluntariadosSalvos();
-    if (document.getElementById('statCampanhas')) document.getElementById('statCampanhas').textContent = ongDados.campanhas.length;
-    if (document.getElementById('statVoluntariados')) document.getElementById('statVoluntariados').textContent = listaVoluntariados.length;
-    if (document.getElementById('statTransporte')) document.getElementById('statTransporte').textContent = ongDados.estatisticas.aguardandoTransporte;
-    if (document.getElementById('statConcluidas')) document.getElementById('statConcluidas').textContent = ongDados.estatisticas.entregasConcluidas;
-
+    atualizarEstatisticas();
     atualizarBadges();
 
     // 2. RENDERIZAÇÃO DE CONTEÚDO
     renderizarCampanhas();
     renderizarVoluntariados();
     renderizarDoacoes();
+    renderizarGerenciadorTransparencia();
 
     // 3. GERENCIADOR DE ABAS DA SIDEBAR
     const navButtons = document.querySelectorAll('.sidebar-nav .nav-item');
@@ -122,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. CONTROLE DO MODAL DE NOVA CAMPANHA (ADICIONADO)
+    // 5. CONTROLE DO MODAL DE NOVA CAMPANHA
     const modalCampanha = document.getElementById('modalCampanha');
     const btnsAbrirCampanha = document.querySelectorAll('.btn-abrir-campanha');
     const btnCloseModalCampanha = document.getElementById('btnCloseModalCampanha');
@@ -149,6 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalCampanha && e.target === modalCampanha) {
             modalCampanha.classList.remove('active');
         }
+        const modalEditTransp = document.getElementById('modalEditarTransparencia');
+        if (modalEditTransp && e.target === modalEditTransp) {
+            fecharModalEdicao();
+        }
     });
 
     // 6. PUBLICAR NOVO VOLUNTARIADO
@@ -157,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const formData = new FormData(formVoluntariado);
-            
+
             const dataInput = formData.get('dataHora');
             let dataFormatada = "Data a definir";
             if (dataInput) {
@@ -171,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: dataFormatada,
                 duracao: formData.get('duracao') ? `${formData.get('duracao')}h` : "N/I",
                 vagasTotal: parseInt(formData.get('vagas')) || 0,
-                inscritos: [], 
+                inscritos: [],
                 descricao: formData.get('descricao') || '',
                 ongNome: nomeExibicao,
                 ongSigla: siglaExibicao
@@ -183,10 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderizarVoluntariados();
             atualizarBadges();
-
-            if (document.getElementById('statVoluntariados')) {
-                document.getElementById('statVoluntariados').textContent = listaAtual.length;
-            }
+            atualizarEstatisticas();
 
             alert('Voluntariado publicado com sucesso em todas as páginas do site!');
             if (modalVoluntariado) modalVoluntariado.classList.remove('active');
@@ -194,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. PUBLICAR NOVA CAMPANHA (ADICIONADO)
+    // 7. PUBLICAR NOVA CAMPANHA
     if (formCampanha) {
         formCampanha.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -217,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ongDados.campanhas.push(novaCampanha);
             renderizarCampanhas();
             atualizarBadges();
+            atualizarEstatisticas();
 
             alert('Campanha criada com sucesso!');
             if (modalCampanha) modalCampanha.classList.remove('active');
@@ -246,13 +293,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // FUNÇÕES AUXILIARES DE RENDERIZAÇÃO E GERENCIAMENTO
 // ==========================================================
 
-function atualizarBadges() {
+function atualizarEstatisticas() {
     const listaVol = obterVoluntariadosSalvos();
-    if (document.getElementById('badgeCampanhas')) document.getElementById('badgeCampanhas').textContent = ongDados.campanhas.length;
-    if (document.getElementById('badgeVoluntariado')) document.getElementById('badgeVoluntariado').textContent = listaVol.length;
+    const listaDoacoes = obterDoacoesSalvas();
+
+    const aguardandoTransporte = listaDoacoes.filter(d => d.status.toLowerCase() === 'em transporte').length;
+    const concluidas = listaDoacoes.filter(d => d.status.toLowerCase() === 'recebido' || d.status.toLowerCase() === 'entregue').length;
+
     if (document.getElementById('statCampanhas')) document.getElementById('statCampanhas').textContent = ongDados.campanhas.length;
+    if (document.getElementById('statVoluntariados')) document.getElementById('statVoluntariados').textContent = listaVol.length;
+    if (document.getElementById('statTransporte')) document.getElementById('statTransporte').textContent = aguardandoTransporte;
+    if (document.getElementById('statConcluidas')) document.getElementById('statConcluidas').textContent = concluidas;
 }
 
+function atualizarBadges() {
+    const listaVol = obterVoluntariadosSalvos();
+    const listaDoacoes = obterDoacoesSalvas();
+    const emTransporte = listaDoacoes.filter(d => d.status.toLowerCase() === 'em transporte').length;
+
+    if (document.getElementById('badgeCampanhas')) document.getElementById('badgeCampanhas').textContent = ongDados.campanhas.length;
+    if (document.getElementById('badgeVoluntariado')) document.getElementById('badgeVoluntariado').textContent = listaVol.length;
+    if (document.getElementById('badgeDoacoes')) document.getElementById('badgeDoacoes').textContent = emTransporte;
+}
+
+// ---------------- CAMPANHAS ----------------
 function renderizarCampanhas() {
     const campanhasContainer = document.getElementById('campanhasContainer');
     if (!campanhasContainer) return;
@@ -361,7 +425,7 @@ function salvarEdicaoCampanha(e, id) {
     campanha.descricao = document.getElementById(`edit-desc-${id}`).value;
     campanha.itens = document.getElementById(`edit-itens-${id}`).value;
     campanha.dataLimite = document.getElementById(`edit-data-${id}`).value;
-    
+
     const hasMeta = document.getElementById(`edit-has-meta-${id}`).checked;
     const metaVal = document.getElementById(`edit-meta-${id}`).value;
     campanha.metaVal = metaVal;
@@ -383,9 +447,11 @@ function excluirCampanha(id) {
         ongDados.campanhas = ongDados.campanhas.filter(c => c.id !== id);
         renderizarCampanhas();
         atualizarBadges();
+        atualizarEstatisticas();
     }
 }
 
+// ---------------- VOLUNTARIADOS ----------------
 function renderizarVoluntariados() {
     const voluntariadosContainer = document.getElementById('voluntariadosContainer');
     const listaVoluntariados = obterVoluntariadosSalvos();
@@ -466,7 +532,7 @@ function renderizarCardsInscritos(inscritos) {
 
 function toggleInscritos(btn, id) {
     const lista = document.getElementById(`lista-inscritos-${id}`);
-    
+
     if (lista.style.display === 'none' || lista.style.display === '') {
         lista.style.display = 'block';
         btn.textContent = 'Ocultar inscritos';
@@ -478,37 +544,277 @@ function toggleInscritos(btn, id) {
     }
 }
 
-function renderizarDoacoes() {
-    const doacoesContainer = document.getElementById('doacoesContainer');
-    if (doacoesContainer) {
-        doacoesContainer.innerHTML = ongDados.doacoes.map(d => `
-            <div class="donation-card">
-                <div class="don-header">
-                    <h4 class="don-title">${d.item}</h4>
-                    <span class="don-badge">${d.status}</span>
-                </div>
-                <p class="don-desc">${d.observacao}</p>
-                <button class="btn-don-action" onclick="confirmarRecebimento(${d.id})">Confirmar recebimento</button>
-            </div>
-        `).join('');
-    }
-}
-
 function excluirVoluntariado(id) {
     if (confirm('Tem certeza que deseja excluir este voluntariado? Ele será removido de todas as páginas do site.')) {
         let lista = obterVoluntariadosSalvos();
         lista = lista.filter(v => v.id !== id);
         salvarVoluntariados(lista);
-        
+
         renderizarVoluntariados();
         atualizarBadges();
-
-        if (document.getElementById('statVoluntariados')) {
-            document.getElementById('statVoluntariados').textContent = lista.length;
-        }
+        atualizarEstatisticas();
     }
 }
 
-function confirmarRecebimento(id) {
-    alert(`Recebimento da doação ID ${id} confirmado com sucesso!`);
+// ---------------- DOAÇÕES E ENTREGAS ----------------
+function renderizarDoacoes() {
+    const doacoesContainer = document.getElementById('doacoesContainer');
+    if (!doacoesContainer) return;
+
+    const listaDoacoes = obterDoacoesSalvas();
+
+    if (listaDoacoes.length === 0) {
+        doacoesContainer.innerHTML = '<p style="color:#777;">Nenhuma doação cadastrada.</p>';
+        return;
+    }
+
+    doacoesContainer.innerHTML = listaDoacoes.map(d => {
+        const isEntregue = d.status.toLowerCase() === 'recebido' || d.status.toLowerCase() === 'entregue';
+
+        return `
+        <div class="donation-card" id="doacao-card-${d.id}">
+            <div class="don-header">
+                <h4 class="don-title">${d.item}</h4>
+                <span class="don-badge ${isEntregue ? 'badge-entregue' : 'badge-transporte'}">${d.status}</span>
+            </div>
+            <p class="don-desc">${d.observacao || ''}</p>
+
+            ${!isEntregue ? `
+                <div id="btn-container-${d.id}">
+                    <button class="btn-don-action" onclick="abrirConfirmacao(${d.id})">Confirmar recebimento</button>
+                </div>
+
+                <form id="form-confirm-${d.id}" class="confirm-form" style="display: none;" onsubmit="publicarConfirmacao(event, ${d.id})">
+                    <div class="form-group">
+                        <label class="confirm-label">Mensagem de agradecimento</label>
+                        <textarea id="msg-agradecimento-${d.id}" class="confirm-textarea" rows="3" placeholder="Recebemos 3 caixas de roupas, já distribuídas para 12 famílias. Muito obrigado!" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="confirm-label">Foto do recebimento</label>
+                        <input type="file" id="foto-input-${d.id}" accept="image/*" style="display: none;" onchange="mostrarPreviewFoto(${d.id})">
+                        <label for="foto-input-${d.id}" class="upload-btn-label">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            Enviar foto
+                        </label>
+                        <div id="preview-foto-${d.id}" class="preview-img-box"></div>
+                    </div>
+
+                    <div class="confirm-actions">
+                        <button type="submit" class="btn-publicar-conf">Publicar confirmação</button>
+                        <button type="button" class="btn-cancelar-conf" onclick="cancelarConfirmacao(${d.id})">Cancelar</button>
+                    </div>
+                </form>
+            ` : `
+                <p style="color: #27ae60; font-size: 0.88rem; font-weight: 500; margin-top: 10px;">✓ Recebimento confirmado e publicado na transparência.</p>
+            `}
+        </div>
+        `;
+    }).join('');
+}
+
+function abrirConfirmacao(id) {
+    const btnContainer = document.getElementById(`btn-container-${id}`);
+    const form = document.getElementById(`form-confirm-${id}`);
+    if (btnContainer) btnContainer.style.display = 'none';
+    if (form) form.style.display = 'flex';
+}
+
+function cancelarConfirmacao(id) {
+    const btnContainer = document.getElementById(`btn-container-${id}`);
+    const form = document.getElementById(`form-confirm-${id}`);
+    if (btnContainer) btnContainer.style.display = 'block';
+    if (form) form.style.display = 'none';
+}
+
+function mostrarPreviewFoto(id) {
+    const input = document.getElementById(`foto-input-${id}`);
+    const preview = document.getElementById(`preview-foto-${id}`);
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.innerHTML = `<img src="${e.target.result}" alt="Foto do recebimento" style="max-width: 120px; border-radius: 6px; margin-top: 6px;">`;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function publicarConfirmacao(e, id) {
+    e.preventDefault();
+
+    const listaDoacoes = obterDoacoesSalvas();
+    const doacao = listaDoacoes.find(d => d.id === id);
+    if (!doacao) return;
+
+    const dadosSalvos = JSON.parse(localStorage.getItem('ongPerfilData'));
+    const nomeOng = dadosSalvos && dadosSalvos.nome ? dadosSalvos.nome : ongDados.nomeCompleto;
+
+    const mensagem = document.getElementById(`msg-agradecimento-${id}`).value;
+    const inputFoto = document.getElementById(`foto-input-${id}`);
+
+    const finalizarPublicacao = (fotoBase64) => {
+        // 1. Atualiza status da doação para 'Recebido'
+        doacao.status = 'Recebido';
+        doacao.confirmadoEm = new Date().toLocaleDateString('pt-BR');
+        salvarDoacoes(listaDoacoes);
+
+        // 2. Cria a postagem para a transparência do perfil público
+        const novaPublicacao = {
+            id: Date.now(),
+            doacaoId: doacao.id,
+            item: doacao.item,
+            observacao: doacao.observacao,
+            mensagem: mensagem,
+            foto: fotoBase64 || '',
+            data: new Date().toLocaleDateString('pt-BR'),
+            ongNome: nomeOng
+        };
+
+        const listaTransparencia = obterTransparenciaSalva();
+        listaTransparencia.unshift(novaPublicacao);
+        salvarTransparencia(listaTransparencia);
+
+        // 3. Atualiza UI e Estatísticas
+        renderizarDoacoes();
+        renderizarGerenciadorTransparencia();
+        atualizarBadges();
+        atualizarEstatisticas();
+
+        alert('Confirmação de recebimento publicada com sucesso na aba de Transparência!');
+    };
+
+    if (inputFoto && inputFoto.files && inputFoto.files[0]) {
+        comprimirImagem(inputFoto.files[0], (base64) => {
+            finalizarPublicacao(base64);
+        });
+    } else {
+        finalizarPublicacao(null);
+    }
+}
+
+// ---------------- TRANSPARÊNCIA ----------------
+
+// Renderiza a lista de transparências no painel com botões de Ação
+function renderizarGerenciadorTransparencia() {
+    const container = document.getElementById('listaTransparenciaPainel');
+    if (!container) return;
+
+    const lista = obterTransparenciaSalva();
+
+    if (lista.length === 0) {
+        container.innerHTML = '<p style="color: #777; font-size: 0.9rem;">Nenhuma postagem de transparência realizada até o momento.</p>';
+        return;
+    }
+
+    container.innerHTML = lista.map(item => `
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 12px 0; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                ${item.foto ? `<img src="${item.foto}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">` : `<div style="width: 50px; height: 50px; background: #eee; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #999;">Sem foto</div>`}
+                <div>
+                    <h5 style="margin: 0 0 4px 0; font-size: 0.95rem; color: #333;">${item.item}</h5>
+                    <p style="margin: 0; font-size: 0.8rem; color: #666; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.mensagem}</p>
+                    <small style="color: #999; font-size: 0.75rem;">${item.data}</small>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-shrink: 0;">
+                <button onclick="abrirModalEdicao(${item.id})" style="background: #eef2f6; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #163B29; font-weight: 600;">Editar</button>
+                <button onclick="excluirTransparencia(${item.id})" style="background: #fee2e2; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #dc2626; font-weight: 600;">Excluir</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Abre o modal carregando os dados do post
+function abrirModalEdicao(id) {
+    const lista = obterTransparenciaSalva();
+    const item = lista.find(t => t.id === id);
+    if (!item) return;
+
+    document.getElementById('editTransparenciaId').value = item.id;
+    document.getElementById('editItemNome').value = item.item;
+    document.getElementById('editMensagem').value = item.mensagem;
+    document.getElementById('editFotoInput').value = '';
+
+    const modal = document.getElementById('modalEditarTransparencia');
+    if (modal) modal.style.display = 'flex';
+}
+
+function fecharModalEdicao() {
+    const modal = document.getElementById('modalEditarTransparencia');
+    if (modal) modal.style.display = 'none';
+}
+
+// Salva as alterações no localStorage
+function salvarEdicaoTransparencia() {
+    const id = Number(document.getElementById('editTransparenciaId').value);
+    const novoItem = document.getElementById('editItemNome').value.trim();
+    const novaMensagem = document.getElementById('editMensagem').value.trim();
+    const inputFoto = document.getElementById('editFotoInput');
+
+    if (!novoItem || !novaMensagem) {
+        alert('Por favor, preencha o título e a mensagem.');
+        return;
+    }
+
+    const lista = obterTransparenciaSalva();
+    const index = lista.findIndex(t => t.id === id);
+    if (index === -1) return;
+
+    const aplicarMudancas = (novaFotoBase64) => {
+        try {
+            lista[index].item = novoItem;
+            lista[index].mensagem = novaMensagem;
+            if (novaFotoBase64 !== null) {
+                lista[index].foto = novaFotoBase64;
+            }
+
+            salvarTransparencia(lista);
+            fecharModalEdicao();
+            renderizarGerenciadorTransparencia();
+            alert('Postagem de transparência atualizada com sucesso!');
+        } catch (err) {
+            console.error(err);
+            alert('Erro ao salvar. O tamanho da imagem excedeu o limite do navegador.');
+        }
+    };
+
+    if (inputFoto && inputFoto.files && inputFoto.files[0]) {
+        comprimirImagem(inputFoto.files[0], (base64) => {
+            aplicarMudancas(base64);
+        });
+    } else {
+        aplicarMudancas(null);
+    }
+}
+
+// Exclui uma publicação e reabre a doação para confirmação
+function excluirTransparencia(id) {
+    if (!confirm('Deseja realmente excluir esta publicação de transparência? A doação voltará para o status pendente de confirmação.')) return;
+
+    let listaTransp = obterTransparenciaSalva();
+    const itemExcluido = listaTransp.find(t => t.id === id);
+
+    if (itemExcluido && itemExcluido.doacaoId) {
+        const listaDoacoes = obterDoacoesSalvas();
+        const doacao = listaDoacoes.find(d => d.id === itemExcluido.doacaoId);
+
+        if (doacao) {
+            doacao.status = 'Em transporte';
+            delete doacao.confirmadoEm;
+            salvarDoacoes(listaDoacoes);
+        }
+    }
+
+    listaTransp = listaTransp.filter(t => t.id !== id);
+    salvarTransparencia(listaTransp);
+
+    renderizarGerenciadorTransparencia();
+    renderizarDoacoes();
+    atualizarBadges();
+    atualizarEstatisticas();
 }

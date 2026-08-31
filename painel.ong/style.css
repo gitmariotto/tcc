@@ -916,3 +916,100 @@ body {
 }
 
 
+
+/* FORMULÁRIO DE CONFIRMAÇÃO DE RECEBIMENTO */
+.confirm-form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.confirm-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.confirm-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.confirm-textarea:focus {
+    border-color: #b85633;
+}
+
+.upload-btn-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    background-color: #fcfcfc;
+    color: #333;
+    font-size: 0.88rem;
+    cursor: pointer;
+    width: fit-content;
+    transition: background 0.2s;
+}
+
+.upload-btn-label:hover {
+    background-color: #f0f0f0;
+}
+
+.confirm-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.btn-publicar-conf {
+    background-color: #b85633;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-publicar-conf:hover {
+    background-color: #a04524;
+}
+
+.btn-cancelar-conf {
+    background: transparent;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-cancelar-conf:hover {
+    text-decoration: underline;
+}
+
+.preview-img-box {
+    max-width: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.preview-img-box img {
+    width: 100%;
+    display: block;
+}
