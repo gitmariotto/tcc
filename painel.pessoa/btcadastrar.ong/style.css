@@ -1,0 +1,108 @@
+.form-wrapper {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: #1c3b2b;
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.ong-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-row-three {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 0.6fr;
+    gap: 20px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: #fcfbf7;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.file-input {
+    background-color: #fcfbf7;
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #1c3b2b;
+    box-shadow: 0 0 0 3px rgba(28, 59, 43, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn-submit {
+    background-color: #b85633;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #9c4525;
+}
+
+@media (max-width: 640px) {
+    .form-row-two, .form-row-three {
+        grid-template-columns: 1fr;
+    }
+}

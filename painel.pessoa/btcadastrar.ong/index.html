@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar minha ONG - Ponte Solidária</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../imagens/logo.png" alt="Logo Ponte Solidária" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../../ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="../../campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="../../carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="../../voluntariado/voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="../../saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../index.html" class="nav-link user-panel">Meu Painel</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="form-wrapper">
+        <header class="form-header">
+            <h1 class="form-title">Cadastrar minha ONG</h1>
+            <p class="form-subtitle">Preencha os dados da instituição. Depois você poderá criar campanhas, publicar missões e confirmar recebimentos.</p>
+        </header>
+
+        <form id="formCadastrarOng" class="ong-form">
+            <div class="form-group full-width">
+                <label for="nomeOng">Nome da ONG</label>
+                <input type="text" id="nomeOng" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" rows="4" placeholder="Quem vocês são, quem atendem e do que mais precisam" required></textarea>
+            </div>
+
+            <div class="form-row-three">
+                <div class="form-group">
+                    <label for="causaPrincipal">Causa principal</label>
+                    <select id="causaPrincipal" required>
+                        <option value="Crianças">Crianças</option>
+                        <option value="Animais">Animais</option>
+                        <option value="Meio Ambiente">Meio Ambiente</option>
+                        <option value="Idosos">Idosos</option>
+                        <option value="Educação">Educação</option>
+                        <option value="Saúde">Saúde</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" required>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" placeholder="SP" maxLength="2" required>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" required>
+            </div>
+
+            <div class="form-row-two">
+                <div class="form-group">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" placeholder="00.000.000/0001-00" required>
+                </div>
+                <div class="form-group">
+                    <label for="chavePix">Chave PIX para doações</label>
+                    <input type="text" id="chavePix" required>
+                </div>
+            </div>
+
+            <div class="form-row-three">
+                <div class="form-group">
+                    <label for="emailContato">E-mail de contato</label>
+                    <input type="email" id="emailContato" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="site">Site</label>
+                    <input type="text" id="site">
+                </div>
+            </div>
+
+            <div class="form-row-two">
+                <div class="form-group">
+                    <label for="logoInput">Logo (upload de imagem)</label>
+                    <input type="file" id="logoInput" accept="image/*" class="file-input">
+                </div>
+                <div class="form-group">
+                    <label for="capaInput">Foto de capa (upload de imagem)</label>
+                    <input type="file" id="capaInput" accept="image/*" class="file-input">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Cadastrar ONG</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

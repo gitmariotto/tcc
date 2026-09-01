@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Voluntário - Kora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Global -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../imagens/logo.png" alt="Kora" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../ongs/ongs.html" class="nav-link">ONGs</a></li>
+                    <li><a href="../campanhas/campanhas.html" class="nav-link">Campanhas</a></li>
+                    <li><a href="../carona.solidaria/carona.html" class="nav-link">Carona solidária</a></li>
+                    <li><a href="../voluntariado/voluntariado.html" class="nav-link">Voluntariado</a></li>
+                    <li><a href="../saiba.mais.pdf" target="_blank" class="nav-link">Saiba mais</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../login/login.html" class="nav-link user-panel">Entrar</a>
+                <a href="../cadastro/cadastro.html" class="btn-create-action">Criar ação</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout Principal com Sidebar Lateral -->
+    <div class="panel-layout">
+        
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="panel-tag">PAINEL DO VOLUNTÁRIO</span>
+                <h2 class="user-name" id="userNameSide">Alicia Souza</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="visao-geral">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Visão geral
+                </button>
+
+                <button class="nav-item" data-tab="minhas-doacoes">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    Minhas doações
+                </button>
+
+                <button class="nav-item" data-tab="minhas-caronas">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"></path>
+                        <circle cx="7" cy="17" r="2"></circle>
+                        <circle cx="17" cy="17" r="2"></circle>
+                    </svg>
+                    Minhas caronas
+                </button>
+
+                <button class="nav-item" data-tab="meus-voluntariados">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    Meus voluntariados
+                </button>
+
+                <button class="nav-item" data-tab="configuracoes">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Configurações
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            
+            <!-- Visão Geral -->
+            <div id="visao-geral" class="tab-pane active">
+                <header class="main-header">
+                    <div class="title-area">
+                        <h1 class="page-title" id="userNameTitle">Alicia Souza</h1>
+                        <p class="page-desc">Acompanhe suas doações, caronas solidárias e inscrições em voluntariados.</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="../painel.ong/editar-perfil-pessoal/index.html?origem=pessoa" class="btn-outline">Editar perfil</a>
+                        <a href="btcadastrar.ong/index.html" class="btn-primary">Cadastrar minha ONG</a>
+                    </div>
+                </header>
+
+                <!-- Cards de Métricas/Contadores -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <span class="metric-number" id="countDoacoes">0</span>
+                        <span class="metric-label">Doações efetuadas</span>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <span class="metric-number" id="countVoluntariados">0</span>
+                        <span class="metric-label">Voluntariados ativos</span>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b85633" stroke-width="2">
+                                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"></path>
+                                <circle cx="7" cy="17" r="2"></circle>
+                                <circle cx="17" cy="17" r="2"></circle>
+                            </svg>
+                        </div>
+                        <span class="metric-number" id="countCaronas">0</span>
+                        <span class="metric-label">Caronas oferecidas</span>
+                    </div>
+                </div>
+
+                <!-- Atalhos Rápidos -->
+                <div class="shortcuts-card">
+                    <h3 class="shortcuts-title">Atalhos rápidos</h3>
+                    <div class="shortcuts-btns">
+                        <a href="../campanhas/campanhas.html" class="btn-shortcut primary">Fazer doação</a>
+                        <a href="../voluntariado/voluntariado.html" class="btn-shortcut">Quero ser voluntário</a>
+                        <a href="../carona.solidaria/carona.html" class="btn-shortcut">Oferecer carona</a>
+                        <a href="btcadastrar.ong/index.html" class="btn-shortcut">Cadastrar ONG</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demais Abas -->
+            <div id="minhas-doacoes" class="tab-pane">
+                <h2 class="section-title">Minhas Doações</h2>
+                <div class="content-box" id="containerDoacoes">Nenhuma doação registrada.</div>
+            </div>
+
+            <div id="minhas-caronas" class="tab-pane">
+                <h2 class="section-title">Minhas Caronas</h2>
+                <div class="content-box" id="containerCaronas">Nenhuma carona ofertada.</div>
+            </div>
+
+            <div id="meus-voluntariados" class="tab-pane">
+                <h2 class="section-title">Meus Voluntariados</h2>
+                <div class="content-box" id="containerVoluntariados">Nenhum voluntariado ativo.</div>
+            </div>
+
+            <div id="configuracoes" class="tab-pane">
+                <h2 class="section-title">Configurações da Conta</h2>
+                <div class="content-box">
+                    <a href="../painel.ong/editar-perfil-pessoal/index.html?origem=pessoa" class="btn-outline">Editar dados pessoais</a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
