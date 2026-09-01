@@ -7,9 +7,7 @@
     --color-brand-terracotta-hover: #9c4526;
 
     --color-bg-page: #FAF9F6;
-    /* Off-White principal */
     --color-bg-alt: #F3EFE6;
-    /* Off-White alternado */
     --color-bg-card: #ffffff;
 
     --color-text-main: #555555;
@@ -63,15 +61,11 @@ body {
 
 .logo-img {
     height: 42px;
-    /* Mantém a altura original para NÃO esticar o cabeçalho */
     width: auto;
     display: block;
     object-fit: contain;
-
-    /* Aumenta a imagem sem alterar o tamanho do cabeçalho */
     transform: scale(3.0);
     transform-origin: left center;
-    /* Mantém a imagem alinhada à esquerda ao crescer */
 }
 
 /* --- NAV --- */
@@ -341,6 +335,7 @@ body {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-bottom: 2.5rem;
 }
 
 .filter-label {
@@ -376,6 +371,120 @@ body {
     background-color: var(--color-brand-green);
     border-color: var(--color-brand-green);
     color: var(--color-white);
+}
+
+/* Grid de Cards de Campanhas Dinâmicas */
+.campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.campaign-card {
+    background-color: var(--color-bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campaign-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.campaign-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+}
+
+.campaign-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.campaign-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(22, 59, 41, 0.85);
+    backdrop-filter: blur(4px);
+    color: var(--color-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.campaign-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.campaign-ong {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-brand-terracotta);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.campaign-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-brand-green);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+
+.campaign-description {
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-campaign {
+    margin-top: auto;
+    display: inline-block;
+    text-align: center;
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+    padding: 0.75rem 1.25rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-campaign:hover {
+    background-color: var(--color-brand-green-hover);
+}
+
+.empty-campaigns {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--color-bg-card);
+    border-radius: 16px;
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-main);
 }
 
 /* --- CTA ONGs E PARCEIROS --- */
@@ -455,6 +564,125 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* --- FOOTER --- */
+.footer {
+    background-color: var(--color-bg-page);
+    border-top: 1px solid var(--color-border);
+    padding: 4rem 2rem 2rem 2rem;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 3rem;
+}
+
+.footer-brand {
+    max-width: 420px;
+}
+
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-img {
+    height: 65px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transform: scale(2.0);
+    /* Ajuste o multiplicador (ex: 1.5, 2.0, 2.5) */
+    transform-origin: left center;
+    /* Mantém a imagem alinhada à esquerda ao crescer */
+}
+
+.footer-description {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-bg-alt);
+    color: var(--color-brand-green);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-link:hover {
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+}
+
+.footer-links-grid {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.footer-column-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--color-brand-green);
+    margin-bottom: 1.25rem;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-list a {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.footer-list a:hover {
+    color: var(--color-brand-terracotta);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-text-main);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888888;
+    letter-spacing: 0.05em;
+}
+
 /* Responsividade */
 @media (max-width: 900px) {
     .partner-card {
@@ -477,6 +705,15 @@ body {
     .btn-partner-secondary {
         text-align: center;
     }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .footer-links-grid {
+        gap: 2.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -495,6 +732,11 @@ body {
     }
 
     .filter-chips-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
     }

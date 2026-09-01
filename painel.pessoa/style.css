@@ -15,6 +15,7 @@ body {
     min-height: calc(100vh - 70px);
 }
 
+/* Sidebar */
 .sidebar {
     width: 260px;
     background-color: #ffffff;
@@ -43,11 +44,10 @@ body {
     margin-top: 5px;
 }
 
-/* Navegação da Sidebar */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .nav-item {
@@ -57,13 +57,18 @@ body {
     padding: 12px 16px;
     border: none;
     background: transparent;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 500;
     color: #555;
     cursor: pointer;
     text-align: left;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.nav-item * {
+    pointer-events: none;
 }
 
 .nav-item:hover {
@@ -74,6 +79,16 @@ body {
 .nav-item.active {
     background-color: #eeede7;
     color: #1c3b2b;
+    font-weight: 600;
+}
+
+.badge-count {
+    margin-left: auto;
+    background-color: #e2e8f0;
+    color: #2c3e50;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
     font-weight: 600;
 }
 
@@ -91,141 +106,72 @@ body {
     display: block;
 }
 
-/* Cabeçalho da Visão Geral */
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 35px;
+/* Card Principal "Meu perfil" */
+.card-profile {
+    background-color: #ffffff;
+    border: 1px solid #e9e8e3;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-.page-title {
+.icon-user {
+    margin-bottom: 16px;
+}
+
+.card-title {
     font-family: 'DM Serif Display', serif;
     font-size: 2.2rem;
     color: #1c3b2b;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
-.page-desc {
-    color: #666;
+.card-email {
     font-size: 0.95rem;
-}
-
-.header-actions {
-    display: flex;
-    gap: 12px;
-}
-
-/* Botões da Interface */
-.btn-outline {
-    border: 1px solid #dcdad0;
-    background-color: #fff;
-    color: #1c3b2b;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.btn-outline:hover {
-    background-color: #f0eee6;
-}
-
-.btn-primary {
-    background-color: #b85633;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.btn-primary:hover {
-    background-color: #9c4525;
-}
-
-/* Cards de Métricas */
-.metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    color: #555;
     margin-bottom: 30px;
 }
 
-.metric-card {
-    background-color: #ffffff;
-    border: 1px solid #e9e8e3;
-    border-radius: 16px;
-    padding: 24px;
+.card-actions {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.metric-icon {
-    margin-bottom: 4px;
-}
-
-.metric-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    color: #1c3b2b;
-    line-height: 1;
-}
-
-.metric-label {
-    font-size: 0.85rem;
-    color: #666;
-}
-
-/* Atalhos Rápidos */
-.shortcuts-card {
-    background-color: #ffffff;
-    border: 1px solid #e9e8e3;
-    border-radius: 16px;
-    padding: 28px;
-}
-
-.shortcuts-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: #1c3b2b;
-    margin-bottom: 20px;
-}
-
-.shortcuts-btns {
-    display: flex;
-    flex-wrap: wrap;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
-.btn-shortcut {
+.btn-pill-outline {
+    display: inline-block;
+    padding: 12px 24px;
     border: 1px solid #dcdad0;
-    background-color: #fff;
-    color: #1c3b2b;
-    padding: 10px 20px;
-    border-radius: 20px;
+    background-color: transparent;
+    color: #2c3e50;
+    border-radius: 30px;
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: background-color 0.2s;
 }
 
-.btn-shortcut.primary {
+.btn-pill-outline:hover {
+    background-color: #f7f6f2;
+}
+
+.btn-pill-solid {
+    display: inline-block;
+    padding: 12px 24px;
     background-color: #b85633;
-    color: #fff;
-    border-color: #b85633;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
 }
 
-.btn-shortcut:hover {
-    border-color: #1c3b2b;
+.btn-pill-solid:hover {
+    background-color: #9c4525;
 }
 
-/* Outras Abas */
+/* Títulos genéricos e caixas de conteúdo */
 .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: 1.8rem;
@@ -238,4 +184,100 @@ body {
     border: 1px solid #e9e8e3;
     border-radius: 16px;
     padding: 24px;
+}
+
+/* Layout da Tela de Configurações */
+.settings-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+}
+
+.settings-card {
+    background-color: #ffffff;
+    border: 1px solid #e9e8e3;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.settings-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    background-color: #f7f6f2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: #1c3b2b;
+    margin-bottom: 2px;
+}
+
+.card-description {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.btn-setting {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b85633;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.btn-setting:hover {
+    background-color: #9c4525;
+}
+
+.btn-setting.secondary {
+    background-color: transparent;
+    color: #1c3b2b;
+    border: 1px solid #dcdad0;
+}
+
+.btn-setting.secondary:hover {
+    background-color: #f7f6f2;
+}
+
+@media (max-width: 600px) {
+    .settings-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-setting {
+        width: 100%;
+        text-align: center;
+    }
 }
